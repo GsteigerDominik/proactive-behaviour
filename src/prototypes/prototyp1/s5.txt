@@ -1,0 +1,17 @@
+Day 1:
+User: "I want to stretch every morning this week."
+Coach: "Great habit! Want me to remind you each morning?"
+
+Day 2:
+Coach (proactively at 8 AM): "Morning! Time for your stretch?"
+User: "Oh right, thanks!"
+
+Day 3:
+Coach: "Did you do your stretch today?"
+User: "Not yet…"
+Coach: "Want to do a quick one now?"
+
+Day 6:
+Coach: "You’ve built a good habit this week! Want to continue next week?"
+
+Goal: Test how well the tool handles proactive reminders and habit formation.

@@ -1,0 +1,16 @@
+Day 1:
+User: "I want to run 5 km three times this week."
+Coach: "Great goal! When do you plan to do your runs?"
+
+Day 2:
+Coach (proactively): "Hey, how’s your first run going today?"
+User: "I just finished! Felt great."
+Coach: "Awesome! Keep that momentum going. What’s your plan for the next run?"
+
+Day 4:
+Coach: "Two more runs left for this week. Do you need any motivation?"
+User: "Not really, I’m feeling great about my progress!"
+Coach: "Love that energy! Keep it up."
+
+Day 6:
+Coach: "Last run of the week! You’ve been consistent—what’s your plan for next week?"

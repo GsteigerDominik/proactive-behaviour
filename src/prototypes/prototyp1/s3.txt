@@ -1,0 +1,13 @@
+Day 1:
+User: "I want to cycle three times this week!"
+Coach: "Great! What’s your plan for your first ride?"
+
+Day 3:
+Coach: "Did you get your first ride in?"
+User: "No, I don’t really feel like it anymore."
+Coach: "No worries! Would a different activity interest you?"
+
+Day 5:
+Coach: "How are you feeling about cycling? Or is there another way you’d like to stay active?"
+User: "Actually, I might try walking instead."
+Coach: "That sounds like a great alternative! How about a short walk today?"
