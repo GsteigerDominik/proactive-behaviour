@@ -1,0 +1,16 @@
+Sunday 17.03.25 18:00 User: "I want to run 5 km three times this week."
+Sunday 17.03.25 18:05 Coach: "Great goal! When do you plan to do your runs?"
+Sunday 17.03.25 18:07 User: "I plan to do my runs on monday, wednesday and friday"
+
+Monday 18.03.25 12:00 Coach : "Hey, how’s your first run going today?"
+Monday 18.03.25 12:25 User: "I just finished! Felt great."
+Monday 18.03.25 12:27 Coach: "Awesome! Keep that momentum going."
+
+Wednesday 20.03.25 08:05 Coach: "Two more runs left for this week. Do you need any motivation?"
+Wednesday 20.03.25 09:19 User: "Not really, I’m feeling great about my progress!"
+Wednesday 20.03.25 09:25 Coach: "Love that energy! Keep it up."
+
+Friday 21.03.25 12:25 Coach: "Last run of the week! You’ve been consistent—what’s your plan for next week?"
+Friday 21.03.25 12:25 User: "My plan is to do 4 runs this week, what do you think about it?"
+
+Monday 24.03.25 18:25 Coach: "Time for your first run how is it going?"

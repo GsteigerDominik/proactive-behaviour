@@ -1,0 +1,12 @@
+Sunday 17.03.25 18:00 User: "I want to run 5 km three times this week."
+Sunday 17.03.25 18:05 Coach: "Great goal! When do you plan to do your runs?"
+Sunday 17.03.25 18:07 User: "I plan to do my runs on Monday, Wednesday, and Friday."
+
+Monday 18.03.25 12:00 Coach: "Hey, how’s your first run going today?"
+Monday 18.03.25 13:30 User: "Didn’t get around to it, but I’ll do it later."
+
+Wednesday 20.03.25 08:05 Coach: "Two more runs left this week. How are you feeling?"
+
+Friday 21.03.25 12:25 Coach: "Hey, just checking in. Do you still want to go for that run today?"
+Friday 21.03.25 12:30 User: "No i dont have time, can you message me shortly after next tuesday."
+Friday 21.03.25 12:35 Coach: "Alright, focus on youre stress right now and we will start next week over again."
