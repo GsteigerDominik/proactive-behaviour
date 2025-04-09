@@ -1,0 +1,18 @@
+03.04.25 08:00 User: "I want to practice guitar for 30 minutes every other day."
+03.04.25 08:05 Coach: "Nice goal! When do you want to schedule your first session?"
+03.04.25 08:07 User: "Maybe midday. Do you think that’s a good time?"
+03.04.25 08:12 Coach: "Midday sounds like a great time! I will message you tommorow at 10:05!"
+
+Szenario: 2025-04-04 09:58:23.150769 No
+
+Today is after the user's requested datetime for contact (2025-04-04 10:05), but since the user showed motivation by setting a goal and is actively engaged, there is no need to reach out right now.
+Szenario: 2025-04-04 09:59:24.730815 No. The coach is scheduled to message the user tomorrow at 10:05, which is after today's date and time.
+Szenario: 2025-04-04 10:00:25.823334 No
+Szenario: 2025-04-04 10:01:26.499749 No
+
+Today is 2025-04-04, and the user requested contact on 2025-04-05 at 10:05. Since it's still before that requested date and time, we should not reach out yet.
+Szenario: 2025-04-04 10:02:27.808905 No
+
+The user requested to be contacted tomorrow at 10:05, and today is April 4. The time is not yet 10:05, so we should wait until then to follow up.
+Szenario: 2025-04-04 10:03:29.035909 No, the user has requested contact after a specific time (10:05 on 04.04.25), which is not yet reached.
+Szenario: 2025-04-04 10:04:30.221723 Yes. The follow-up message is due today at 10:05, and it would be helpful to complete the conversation.

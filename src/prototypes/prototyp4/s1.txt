@@ -1,0 +1,4 @@
+03.04.25 08:00 User: "I want to practice guitar for 30 minutes every other day."
+03.04.25 08:05 Coach: "Nice goal! When do you want to schedule your first session?"
+03.04.25 08:07 User: "Maybe midday. Do you think that’s a good time?"
+03.04.25 08:12 Coach: "Midday sounds like a great time! I will message you tommorow at 10:05!"
