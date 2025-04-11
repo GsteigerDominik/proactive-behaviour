@@ -19,10 +19,6 @@ def acting():
             mongodb_util.insert_message(chat_id, datetime.now(), False, action)
 
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(acting, 'interval', minutes=5)
-scheduler.start()
-
 @app.route("/")
 def indexPage():
     return send_file("static/index.html")
