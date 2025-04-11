@@ -1,21 +1,11 @@
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
-from app import app
-
-
-def acting():
-    print('ACTING')
-    app.acting()
+sched = BlockingScheduler()
 
 
-if __name__ == "__main__":
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(acting, 'interval', minutes=5)
-    scheduler.start()
+@sched.scheduled_job('interval', minutes=3)
+def timed_job():
+    print('This job is run every three minutes.')
 
-    # Keep alive
-    import time
 
-    while True:
-        print('is_alive')
-        time.sleep(60)
+sched.start()
