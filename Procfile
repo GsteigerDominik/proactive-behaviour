@@ -1,2 +1,1 @@
-web: gunicorn app.app:app
-scheduler: python scheduler.py
+web: gunicorn --preload app.app:app
