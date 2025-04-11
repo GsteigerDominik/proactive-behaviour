@@ -1,0 +1,24 @@
+[
+    {'datetime': '2025-04-08 18:00:00', 'is_user': True, 'message': 'Hey, I want to get back into running. I used to run regularly, but I’ve been struggling to stay consistent.'},
+    {'datetime': '2025-04-08 18:01:00', 'is_user': False, 'message': 'That’s a great goal, Anna! Let’s start by defining something measurable. How about aiming to run 3 times this week, for at least 20 minutes each time?'},
+    {'datetime': '2025-04-08 18:02:30', 'is_user': True, 'message': 'Yeah, that sounds doable. Let’s go with that.'},
+    {'datetime': '2025-04-08 18:03:30', 'is_user': False, 'message': 'Awesome! I’ll check in with you tomorrow evening to see how things are going. When do you usually have time for a run?'},
+    {'datetime': '2025-04-08 18:04:10', 'is_user': True, 'message': 'Evenings work best, like around 6 or 7 PM.'},
+    {'datetime': '2025-04-08 18:05:00', 'is_user': False, 'message': 'Noted! Good luck tomorrow – you got this 💪'},
+
+    {'datetime': '2025-04-09 18:30:00', 'is_user': False, 'message': 'Hey Anna 👋 Just checking in – did you get your first run in today?'},
+    {'datetime': '2025-04-09 18:32:00', 'is_user': True, 'message': 'Not yet… I got caught up with work. Might still go later though.'},
+    {'datetime': '2025-04-09 18:33:15', 'is_user': False, 'message': 'Totally understand. Sometimes the day just runs away 😅 Even a short run counts – even 10 minutes gets you closer to your goal. Want me to remind you again in an hour?'},
+    {'datetime': '2025-04-09 18:34:00', 'is_user': True, 'message': 'Yes, please. That would help.'},
+    {'datetime': '2025-04-09 19:30:00', 'is_user': False, 'message': 'Time to lace up those shoes! 🏃‍♀️ A quick jog could feel great.'},
+    {'datetime': '2025-04-09 21:15:00', 'is_user': True, 'message': 'Okay I did a 15-minute run! Not quite 20 but it’s a start.'},
+    {'datetime': '2025-04-09 21:16:00', 'is_user': False, 'message': 'That’s amazing, Anna! It’s not about perfection – it’s about showing up. 1/3 runs done. High five 🙌'},
+
+    {'datetime': '2025-04-10 12:00:00', 'is_user': False, 'message': 'Just a midday check-in: How’s your energy today? Thinking about a run tonight?'},
+    {'datetime': '2025-04-10 12:15:00', 'is_user': True, 'message': 'Honestly, I’m a bit sore today. Might skip.'},
+    {'datetime': '2025-04-10 12:16:30', 'is_user': False, 'message': 'Totally fair. Recovery is important too. How about a light stretch or a short walk to stay in rhythm?'},
+    {'datetime': '2025-04-10 12:18:00', 'is_user': True, 'message': 'Yeah, a walk sounds good. I’ll do that.'},
+    {'datetime': '2025-04-10 20:00:00', 'is_user': False, 'message': 'Hope your walk went well! Do you want to aim for your second run tomorrow?'},
+    {'datetime': '2025-04-10 20:02:00', 'is_user': True, 'message': 'Yes, let’s do that.'},
+    {'datetime': '2025-04-10 20:03:00', 'is_user': False, 'message': 'Great – I’ll check in around 6 PM tomorrow. You\'re doing really well. Keep it up 💪'}
+]

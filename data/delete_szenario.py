@@ -9,5 +9,5 @@ client = pymongo.MongoClient(MONGODB_CONNECTION_URL)
 db = client["proactive-behaviour"]
 col = db["test"]
 
-query_filter = { "chat_id": 'szenario_c'}
+query_filter = { "chat_id": 'test_auto_11-04'}
 result = col.delete_many(query_filter)

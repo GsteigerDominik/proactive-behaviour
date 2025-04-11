@@ -49,4 +49,4 @@ def send_message():
     if agents_response:
         mongodb_util.insert_message(chat_id, datetime.now(), False, agents_response)
         return jsonify({'response': agents_response})
-    return jsonify({'response': 'No Response needed...'})
+    return
