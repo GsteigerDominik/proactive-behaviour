@@ -3,20 +3,22 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, send_file, jsonify, request
 
-import agent
-from util import mongodb_util
+from app import agent
+from app.util import mongodb_util
 
 print("*** Init Flask App ***")
 app = Flask(__name__, static_url_path='/', static_folder='static')
 
+
 def helloworld():
     #for every chat agent.act
-    chat_ids= mongodb_util.read_chatids()
+    chat_ids = mongodb_util.read_chatids()
     for chat_id in chat_ids:
-        reactioN =agent.react(chat_id)
+        reactioN = agent.react(chat_id)
         print(reactioN)
         if reactioN:
             mongodb_util.insert_message(chat_id, datetime.now(), False, agents_response)
+
 
 #scheduler = BackgroundScheduler()
 #scheduler.add_job(helloworld, 'interval', minutes=1)
