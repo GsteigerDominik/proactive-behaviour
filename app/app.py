@@ -10,19 +10,18 @@ print("*** Init Flask App ***")
 app = Flask(__name__, static_url_path='/', static_folder='static')
 
 
-def helloworld():
-    #for every chat agent.act
+def acting():
     chat_ids = mongodb_util.read_chatids()
     for chat_id in chat_ids:
-        reactioN = agent.react(chat_id)
-        print(reactioN)
-        if reactioN:
-            mongodb_util.insert_message(chat_id, datetime.now(), False, agents_response)
+        action = agent.react(chat_id)
+        print('Agents gona act for chat', chat_id,action)
+        if action:
+            mongodb_util.insert_message(chat_id, datetime.now(), False, action)
 
 
-#scheduler = BackgroundScheduler()
-#scheduler.add_job(helloworld, 'interval', minutes=1)
-#scheduler.start()
+scheduler = BackgroundScheduler()
+scheduler.add_job(acting, 'interval', minutes=5)
+scheduler.start()
 
 @app.route("/")
 def indexPage():
