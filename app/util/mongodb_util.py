@@ -36,7 +36,6 @@ def read_chathistory_json(chat_id):
     data = list(col.find({'chat_id': chat_id}).sort('timestamp'))
     for x in data:
         x['_id'] = str(x['_id'])
-        print(x)
     return data
 
 
@@ -54,7 +53,6 @@ def read_chatoverview():
     newest_per_chat = list(col.aggregate(pipeline))
     for x in newest_per_chat:
         x['_id'] = str(x['_id'])
-        print(x)
     return newest_per_chat
 
 
