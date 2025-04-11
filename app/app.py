@@ -9,7 +9,6 @@ from app.util import mongodb_util
 print("*** Init Flask App ***")
 app = Flask(__name__, static_url_path='/', static_folder='static')
 
-
 def acting():
     chat_ids = mongodb_util.read_chatids()
     for chat_id in chat_ids:
@@ -18,6 +17,11 @@ def acting():
         if action:
             mongodb_util.insert_message(chat_id, datetime.now(), False, action)
 
+
+# First Start the scheduler so no multithreading happends then add the job
+scheduler = BackgroundScheduler()
+scheduler.start()
+scheduler.add_job(acting, 'interval', minutes=5)
 
 @app.route("/")
 def indexPage():
