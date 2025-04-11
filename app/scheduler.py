@@ -4,6 +4,7 @@ from app import app
 
 
 def acting():
+    print('ACTING')
     app.acting()
 
 
@@ -16,4 +17,5 @@ if __name__ == "__main__":
     import time
 
     while True:
+        print('is_alive')
         time.sleep(60)

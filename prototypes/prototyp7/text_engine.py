@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.prototyp7.chatgpt_adapter import gpt_query
+from data.prototyp7.chatgpt_adapter import gpt_query
 
 
 def load_txt_file(path):

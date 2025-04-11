@@ -1,8 +1,8 @@
 import json
 from datetime import datetime
 
-from src.prototyp7.chatgpt_adapter import gpt_query, gpt_query_with_response_format
-from src.prototyp7.response_formats import DecisionResponse
+from data.prototyp7.chatgpt_adapter import gpt_query, gpt_query_with_response_format
+from data.prototyp7.response_formats import DecisionResponse
 
 
 def load_txt_file(path):

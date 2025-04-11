@@ -29,3 +29,10 @@ def read_chathistory(chat_id):
         role = "User" if x['is_user'] else "Coach"
         response += f"{x['timestamp']} {role}: {x['message']} \n"
     return response
+
+def read_chatids():
+    return list(col.distinct("chat_id"))
+
+chat_ids = read_chatids()
+for chat_id in chat_ids:
+    print(chat_id)

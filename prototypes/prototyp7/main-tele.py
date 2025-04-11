@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 
-from src.prototyp7.decision_engine import should_answer
-from src.prototyp7.mongodb_adapter import insert_message, read_chathistory
-from src.prototyp7.text_engine import generate_response
+from data.prototyp7.decision_engine import should_answer
+from data.prototyp7.mongodb_adapter import insert_message, read_chathistory
+from data.prototyp7.text_engine import generate_response
 
 import logging
 logger = logging.getLogger(__name__)
