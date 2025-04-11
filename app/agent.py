@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from app import response_formats
-from util import mongodb_util, openai_util, file_util
+from app.util import mongodb_util, openai_util, file_util
 
 
 def react(chat_id):
