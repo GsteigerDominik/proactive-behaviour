@@ -16,7 +16,7 @@ def react(chat_id):
 
 
 def should_answer(chat_history):
-    base_prompt = file_util.load_txt_file("./src/app/decision_prompt.txt")
+    base_prompt = file_util.load_txt_file("./app/decision_prompt.txt")
     prompt = base_prompt.format(timestamp=datetime.now(), chat_history=chat_history)
     response: response_formats.DecisionResponse = openai_util.gpt_query_with_response_format(prompt, response_formats.DecisionResponse)
     print(f'{datetime.now()} DECISION_ENGINE: {response.contact_user}, Reasoning: {response.reasoning}')
@@ -24,7 +24,7 @@ def should_answer(chat_history):
 
 
 def generate_response(chat_history):
-    base_prompt = file_util.load_txt_file("./src/app/text_prompt.txt")
+    base_prompt = file_util.load_txt_file("./app/text_prompt.txt")
     prompt = base_prompt.format(timestamp=datetime.now(), chat_history=chat_history)
     response = openai_util.gpt_query(prompt)
     return response
