@@ -3,7 +3,7 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, send_file, jsonify, request
 
-from . import agent
+import agent
 from util import mongodb_util
 
 print("*** Init Flask App ***")

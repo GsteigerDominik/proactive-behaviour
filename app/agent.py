@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from . import response_formats
+import response_formats
 from util import mongodb_util, openai_util, file_util
 
 
