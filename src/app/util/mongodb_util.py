@@ -56,3 +56,6 @@ def read_chatoverview():
         x['_id'] = str(x['_id'])
         print(x)
     return newest_per_chat
+
+def read_chatids():
+    return list(col.distinct("chat_id"))
