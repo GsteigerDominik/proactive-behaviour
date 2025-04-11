@@ -48,7 +48,8 @@ def read_chatoverview():
                 "latest": {"$first": "$$ROOT"}
             }
         },
-        {"$replaceRoot": {"newRoot": "$latest"}}
+        {"$replaceRoot": {"newRoot": "$latest"}},
+        {"$sort": {"chat_id": 1}}
     ]
     newest_per_chat = list(col.aggregate(pipeline))
     for x in newest_per_chat:
