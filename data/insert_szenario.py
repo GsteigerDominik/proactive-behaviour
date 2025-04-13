@@ -28,13 +28,18 @@ def insert_message(szenario,datetime, is_user, message):
 #Szenario 1 Getting Back into Running
 #Scenario 2: “The Motivated Student” (Goal: Daily Study Habit)
 #Scenario 3: “The Ghosting User” (Goal: Meditate 3x/week)
-szenario = [
-    # Day 1 – Goal Setting (2025-04-08)
-    {'datetime': '2025-04-11 14:00:00',
-     'is_user': False,
-     'message': 'Hallo, Ich bin dein Coach und hier, um dich bei deinen Zielen zu unterstützen. Sag mir einfach, wer du bist und was du erreichen möchtest!'},
-]
+szenario =[
+    {'datetime': '2025-04-10 14:00:00', 'is_user': True, 'message': 'I’d like to start meditating more regularly. I feel stressed lately.'},
+    {'datetime': '2025-04-10 14:01:00', 'is_user': False, 'message': 'Good call – meditation can really help. Want to aim for 3 sessions this week, 10 minutes each?'},
+    {'datetime': '2025-04-10 14:01:45', 'is_user': True, 'message': 'Sounds good. Let’s do it.'},
+    {'datetime': '2025-04-10 14:03:00', 'is_user': False, 'message': 'Great! Want me to remind you in the evenings or mornings?'},
+    {'datetime': '2025-04-10 14:04:00', 'is_user': True, 'message': 'Evenings would be better.'},
+    {'datetime': '2025-04-10 14:05:00', 'is_user': False, 'message': 'Got it. Let’s try for your first session tonight after 8 PM.'},
 
+    {'datetime': '2025-04-11 20:00:00', 'is_user': False, 'message': 'Hey, how are you feeling tonight? Ready for a short meditation session?'},
+
+    {'datetime': '2025-04-12 20:15:00', 'is_user': False, 'message': 'Just checking in. Haven’t heard from you – everything okay? Remember, it’s okay to restart anytime.'}
+]
 for chat in szenario:
-    insert_message('Anna Albrecht',
+    insert_message('Szenario-03',
         datetime.strptime(chat['datetime'], '%Y-%m-%d %H:%M:%S'),chat['is_user'],chat['message'])
