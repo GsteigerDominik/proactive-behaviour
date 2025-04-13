@@ -9,6 +9,7 @@ MONGODB_CONNECTION_URL = os.getenv("MONGODB_CONNECTION_URL")
 client = pymongo.MongoClient(MONGODB_CONNECTION_URL)
 db = client["proactive-behaviour"]
 col = db["test"]
+col_debug = db["debug"]
 
 
 def insert_message(chat_id, datetime, is_user, message):
@@ -22,6 +23,12 @@ def insert_message(chat_id, datetime, is_user, message):
         }
     )
 
+
+def insert_debug(datetime,prompt):
+    col_debug.insert_one({
+        "timestamp": datetime,
+        "prompt": prompt
+    })
 
 def read_chathistory_string(chat_id):
     response = ""

@@ -19,6 +19,7 @@ def react(chat_id):
 def should_answer(chat_history):
     base_prompt = file_util.load_txt_file("./app/decision_prompt.txt")
     prompt = base_prompt.format(timestamp=datetime.now(ZoneInfo("Europe/Zurich")), chat_history=chat_history)
+    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")),prompt)
     response: response_formats.DecisionResponse = openai_util.gpt_query_with_response_format(prompt,
                                                                                              response_formats.DecisionResponse)
     return response
@@ -27,5 +28,6 @@ def should_answer(chat_history):
 def generate_response(chat_history):
     base_prompt = file_util.load_txt_file("./app/text_prompt.txt")
     prompt = base_prompt.format(timestamp=datetime.now(ZoneInfo("Europe/Zurich")), chat_history=chat_history)
+    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")),prompt)
     response = openai_util.gpt_query(prompt)
     return response
