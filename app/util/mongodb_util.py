@@ -1,6 +1,7 @@
 import os
 
 import pymongo
+import pytz
 from dotenv import load_dotenv
 
 # SETUP
@@ -24,18 +25,22 @@ def insert_message(chat_id, datetime, is_user, message):
     )
 
 
-def insert_debug(datetime,prompt):
+def insert_debug(datetime, prompt):
     col_debug.insert_one({
         "timestamp": datetime,
         "prompt": prompt
     })
+
 
 def read_chathistory_string(chat_id):
     response = ""
     data = col.find({'chat_id': chat_id}).sort('timestamp')
     for x in data:
         role = "User" if x['is_user'] else "Coach"
-        response += f"{x['timestamp']} {role}: {x['message']} \n"
+        utc_timestamp = pytz.utc.localize(x['timestamp'])
+        zurich_tz = pytz.timezone("Europe/Zurich")
+        local_datetime = utc_timestamp.astimezone(zurich_tz)
+        response += f"{local_datetime} {role}: {x['message']} \n"
     return response
 
 
@@ -66,3 +71,6 @@ def read_chatoverview():
 
 def read_chatids():
     return list(col.distinct("chat_id"))
+
+
+print(read_chathistory_string("Szenario-01"))
