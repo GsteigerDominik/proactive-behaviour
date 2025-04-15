@@ -12,7 +12,9 @@ def gpt_query(prompt):
     try:
         client = OpenAI(api_key=API_KEY, )
         chat_completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt, }], model="gpt-4o-mini", )
+            messages=[{"role": "user", "content": prompt, }],
+            model="gpt-4o-mini",
+            temperature=0.2)
 
         generated_text = chat_completion.choices[0].message.content
         return str(generated_text)
