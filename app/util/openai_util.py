@@ -8,7 +8,7 @@ load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")
 
 
-def gpt_query(prompt,temperature):
+def gpt_query(prompt):
     try:
         client = OpenAI(api_key=API_KEY, )
         chat_completion = client.chat.completions.create(
