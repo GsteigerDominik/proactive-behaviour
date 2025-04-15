@@ -1,10 +1,10 @@
 [
-{"datetime": "2025-04-15 14:00:00", "is_user": true, "message": "I’d like to start meditating more regularly. I feel stressed lately."},
-{"datetime": "2025-04-15 14:01:00", "is_user": false, "message": "Good call – meditation can really help. Want to aim for 3 sessions this week, 10 minutes each?"},
-{"datetime": "2025-04-15 14:01:45", "is_user": true, "message": "Sounds good. Let’s do it."},
-{"datetime": "2025-04-15 14:03:00", "is_user": false, "message": "Great! Want me to remind you in the evenings or mornings?"},
-{"datetime": "2025-04-15 14:04:00", "is_user": true, "message": "Evenings would be better."},
-{"datetime": "2025-04-15 14:05:00", "is_user": false, "message": "Got it. Let’s try for your first session tonight after 8 PM."},
-{"datetime": "2025-04-16 20:00:00", "is_user": false, "message": "Hey, how are you feeling tonight? Ready for a short meditation session?"},
-{"datetime": "2025-04-17 20:15:00", "is_user": false, "message": "Just checking in. Haven’t heard from you – everything okay? Remember, it’s okay to restart anytime."}
+{"datetime": "2025-04-16 14:00:00", "is_user": true, "message": "I’d like to start meditating more regularly. I feel stressed lately."},
+{"datetime": "2025-04-16 14:01:00", "is_user": false, "message": "Good call – meditation can really help. Want to aim for 3 sessions this week, 10 minutes each?"},
+{"datetime": "2025-04-16 14:01:45", "is_user": true, "message": "Sounds good. Let’s do it."},
+{"datetime": "2025-04-16 14:03:00", "is_user": false, "message": "Great! Want me to remind you in the evenings or mornings?"},
+{"datetime": "2025-04-16 14:04:00", "is_user": true, "message": "Evenings would be better."},
+{"datetime": "2025-04-16 14:05:00", "is_user": false, "message": "Got it. Let’s try for your first session tonight after 8 PM."},
+{"datetime": "2025-04-17 20:00:00", "is_user": false, "message": "Hey, how are you feeling tonight? Ready for a short meditation session?"},
+{"datetime": "2025-04-18 20:15:00", "is_user": false, "message": "Just checking in. Haven’t heard from you – everything okay? Remember, it’s okay to restart anytime."}
 ]
