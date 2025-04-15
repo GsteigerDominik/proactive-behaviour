@@ -10,7 +10,7 @@ def react(chat_id):
     should = should_answer(chat_hist)
     print(f'{chat_id} : DECISION {should.contact_user}, {should.reasoning}')
     if should.contact_user:
-        response = generate_response(chat_hist)
+        response = generate_response(chat_hist, should.reasoning)
         print(f'{chat_id} : MESSAGE {response}')
         return response
     return None
@@ -19,15 +19,15 @@ def react(chat_id):
 def should_answer(chat_history):
     base_prompt = file_util.load_txt_file("./app/decision_prompt.txt")
     prompt = base_prompt.format(timestamp=datetime.now(ZoneInfo("Europe/Zurich")), chat_history=chat_history)
-    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")),prompt)
+    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")), prompt)
     response: response_formats.DecisionResponse = openai_util.gpt_query_with_response_format(prompt,
                                                                                              response_formats.DecisionResponse)
     return response
 
 
-def generate_response(chat_history):
+def generate_response(chat_history, reasoning):
     base_prompt = file_util.load_txt_file("./app/text_prompt.txt")
-    prompt = base_prompt.format(timestamp=datetime.now(ZoneInfo("Europe/Zurich")), chat_history=chat_history)
-    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")),prompt)
+    prompt = base_prompt.format(timestamp=datetime.now(ZoneInfo("Europe/Zurich")), chat_history=chat_history,reasoning=reasoning)
+    mongodb_util.insert_debug(datetime.now(ZoneInfo("Europe/Zurich")), prompt)
     response = openai_util.gpt_query(prompt)
     return response
