@@ -8,13 +8,13 @@ load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")
 
 
-def gpt_query(prompt):
+def gpt_query(prompt,temperature):
     try:
         client = OpenAI(api_key=API_KEY, )
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt, }],
             model="gpt-4o-mini",
-            temperature=0.2)
+            temperature=1)
 
         generated_text = chat_completion.choices[0].message.content
         return str(generated_text)
@@ -28,7 +28,8 @@ def gpt_query_with_response_format(prompt,response_format):
         client = OpenAI(api_key=API_KEY, )
         chat_completion = client.beta.chat.completions.parse(
             messages=[{"role": "user", "content": prompt, }], model="gpt-4o-mini",
-            response_format=response_format)
+            response_format=response_format,
+            temperature=0.2)
         return chat_completion.choices[0].message.parsed
     except Exception as e:
         print(f"Error: {e}")
