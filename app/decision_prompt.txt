@@ -35,4 +35,4 @@ This is the Chathistory:
 {chat_history}
 
 Only respond in this format:
-{{"answer": true/false, "reasoning": "short explanation of your reasoning"}}
+{{"contact_user": true/false, "reasoning": "short explanation of your reasoning"}}
