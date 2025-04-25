@@ -29,7 +29,7 @@ def gpt_query_with_response_format(prompt,response_format):
         chat_completion = client.beta.chat.completions.parse(
             messages=[{"role": "user", "content": prompt, }], model="gpt-4o-mini",
             response_format=response_format,
-            temperature=0.2)
+            temperature=0.8)
         return chat_completion.choices[0].message.parsed
     except Exception as e:
         print(f"Error: {e}")
