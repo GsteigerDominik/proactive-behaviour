@@ -2,12 +2,11 @@ import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-import dotenv
 import requests
+import telegram
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 from flask import Flask, send_file, jsonify, request
-import telegram
 
 from app import agent
 from app.util import mongodb_util
@@ -15,8 +14,8 @@ from app.util import mongodb_util
 print("*** Init Flask App ***")
 app = Flask(__name__, static_url_path='/', static_folder='static')
 load_dotenv()
-TELEGRAM_BOT_TOKEN=os.getenv('TELEGRAM_BOT_TOKEN')
-HEROKU_URL=os.getenv('HEROKU_URL')
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+HEROKU_URL = os.getenv('HEROKU_URL')
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 
 
@@ -28,11 +27,11 @@ def acting():
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
 
 
-
 # First Start the scheduler so no multithreading happends then add the job
 scheduler = BackgroundScheduler()
 scheduler.start()
 scheduler.add_job(acting, 'interval', minutes=5)
+
 
 @app.route("/")
 def indexPage():
@@ -61,26 +60,25 @@ def send_message():
         return jsonify({'response': agents_response})
     return jsonify({'response': 'no response reload to delete me'})
 
-"""
-here the route function respond to a url which is basically /{token} which is the url telegram will call to get responses for the messages sent to him.
-"""
-@app.route('/bot/{}'.format(TELEGRAM_BOT_TOKEN),methods=['GET','POST','PUT'])
-def respond():
+
+@app.route('/bot/{}'.format(TELEGRAM_BOT_TOKEN), methods=['POST'])
+async def respond():
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
     # get the chat_id to be able to respond to the same user
-    original_chat_id=update.message.chat.id
-    chat_id = 'tg-'+str(update.message.chat.id)
+    original_chat_id = update.message.chat.id
+    chat_id = 'tg-' + str(update.message.chat.id)
     msg = update.message.text.encode('utf-8').decode()
 
     mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
     agents_response = agent.react(chat_id)
     if agents_response:
         mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
-        bot.sendMessage(chat_id=original_chat_id, text=agents_response)
+        await bot.sendMessage(chat_id=original_chat_id, text=agents_response)
 
     return 'ok'
+
 
 # Only for setup purposes
 @app.route('/setwebhook', methods=['GET', 'POST'])
