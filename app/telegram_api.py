@@ -4,13 +4,15 @@ from zoneinfo import ZoneInfo
 import requests
 import telegram
 from flask import request, Blueprint
+from telegram.request import HTTPXRequest
 
 from app import env, agent
 from app.util import mongodb_util
 
 telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
-bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN)
+request = HTTPXRequest(pool_maxsize=50, pool_timeout=10.0)
+bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN,request=request)
 
 
 @telegram_blueprint.route('/setwebhook', methods=['GET', 'POST'])
