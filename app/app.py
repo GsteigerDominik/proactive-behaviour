@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -26,7 +27,7 @@ async def acting():
 # First Start the scheduler so no multithreading happends then add the job
 scheduler = BackgroundScheduler()
 scheduler.start()
-scheduler.add_job(acting, 'interval', minutes=5)
+scheduler.add_job(lambda: asyncio.run(acting()), 'interval', minutes=5)
 
 
 @app.route("/")
