@@ -20,8 +20,8 @@ async def acting():
         action = agent.react(chat_id)
         if action:
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
-            if chat_id.startswith('tg'):
-                await send_telegram_msg(chat_id.removeprefix('tg'), text=action)
+            if chat_id.startswith('tg-'):
+                await send_telegram_msg(chat_id.removeprefix('tg-'), text=action)
 
 
 # First Start the scheduler so no multithreading happends then add the job
