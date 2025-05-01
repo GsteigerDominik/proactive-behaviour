@@ -1,34 +1,26 @@
-import asyncio
-import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-import requests
-import telegram
 from apscheduler.schedulers.background import BackgroundScheduler
-from dotenv import load_dotenv
 from flask import Flask, send_file, jsonify, request
 
 from app import agent
+from app.telegram_api import send_telegram_msg, telegram_blueprint
 from app.util import mongodb_util
 
 print("*** Init Flask App ***")
 app = Flask(__name__, static_url_path='/', static_folder='static')
-load_dotenv()
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-HEROKU_URL = os.getenv('HEROKU_URL')
-bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
+app.register_blueprint(telegram_blueprint)
 
 
-def acting():
+async def acting():
     chat_ids = mongodb_util.read_chatids()
     for chat_id in chat_ids:
         action = agent.react(chat_id)
         if action:
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
             if chat_id.startswith('tg'):
-                asyncio.run(bot.sendMessage(chat_id=chat_id.removeprefix('tg'), text=action))
-
+                await send_telegram_msg(chat_id.removeprefix('tg'), text=action)
 
 
 # First Start the scheduler so no multithreading happends then add the job
@@ -63,36 +55,3 @@ def send_message():
         mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
         return jsonify({'response': agents_response})
     return jsonify({'response': 'no response reload to delete me'})
-
-
-@app.route('/bot/{}'.format(TELEGRAM_BOT_TOKEN), methods=['POST'])
-def respond():
-    # retrieve the message in JSON and then transform it to Telegram object
-    update = telegram.Update.de_json(request.get_json(force=True), bot)
-
-    # get the chat_id to be able to respond to the same user
-    original_chat_id = update.message.chat.id
-    chat_id = 'tg-' + str(update.message.chat.id)
-    msg = update.message.text.encode('utf-8').decode()
-
-    mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
-    agents_response = agent.react(chat_id)
-    if agents_response:
-        mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
-        asyncio.run(bot.sendMessage(chat_id=original_chat_id, text=agents_response))
-
-    return 'ok'
-
-
-# Only for setup purposes
-@app.route('/setwebhook', methods=['GET', 'POST'])
-def set_webhook():
-    response = requests.post(
-        f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/setWebhook',
-        data={'url': HEROKU_URL}
-    )
-    if response.status_code == 200:
-        print('Webhook has been set successfully!')
-    else:
-        print('Failed to set webhook. Please check your API token and URL.')
-    return 'ok'

@@ -1,0 +1,48 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+import requests
+import telegram
+from flask import request, Blueprint
+
+from app import env, agent
+from app.util import mongodb_util
+
+telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
+
+bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN)
+
+
+@telegram_blueprint.route('/setwebhook', methods=['GET', 'POST'])
+def set_webhook():
+    response = requests.post(
+        f'https://api.telegram.org/bot{env.TELEGRAM_BOT_TOKEN}/setWebhook',
+        data={'url': env.HEROKU_URL}
+    )
+    if response.status_code == 200:
+        print('Webhook has been set successfully!')
+    else:
+        print('Failed to set webhook. Please check your API token and URL.')
+    return 'ok'
+
+
+@telegram_blueprint.route('/bot/{}'.format(env.TELEGRAM_BOT_TOKEN), methods=['POST'])
+async def respond():
+    # retrieve the message in JSON and then transform it to Telegram object
+    update = telegram.Update.de_json(request.get_json(force=True), bot)
+
+    # get the chat_id to be able to respond to the same user
+    original_chat_id = update.message.chat.id
+    chat_id = 'tg-' + str(update.message.chat.id)
+    msg = update.message.text.encode('utf-8').decode()
+
+    mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
+    agents_response = agent.react(chat_id)
+    if agents_response:
+        mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
+        await send_telegram_msg(original_chat_id, agents_response)
+    return 'ok'
+
+
+async def send_telegram_msg(chat_id, text):
+    await bot.sendMessage(chat_id=chat_id, text=text)
