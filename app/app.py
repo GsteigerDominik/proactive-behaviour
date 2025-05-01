@@ -26,7 +26,7 @@ def acting():
         action = agent.react(chat_id)
         if action:
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
-            if action.startswith('tg'):
+            if chat_id.startswith('tg'):
                 asyncio.run(bot.sendMessage(chat_id=chat_id.removeprefix('tg'), text=action))
 
 
