@@ -59,7 +59,7 @@ print("Szenario 1: Sunday 17.03.25 18:30", response)
 
 szenario = load_txt_file('s2.txt')
 response = gpt_query(create_prompt(szenario, "Sunday 17.03.25 18:30"))
-print("Szenario 1: Sunday 17.03.25 18:30", response)
+print("Szenario 2: Sunday 17.03.25 18:30", response)
 
 response = gpt_query(create_prompt(szenario, "Monday 18.03.25 08:30"))
 print("Szenario 2: Monday 18.03.25 08:30", response)

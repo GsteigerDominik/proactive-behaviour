@@ -1,0 +1,19 @@
+[
+  {"datetime": "2025-04-23 09:00:00", "is_user": false, "message": "Guten Morgen! Hast du heute schon deine Übungen gemacht?"},
+  {"datetime": "2025-04-23 09:45:00", "is_user": true, "message": "Uff, noch nicht. Ich hab’s ehrlich gesagt vergessen."},
+  {"datetime": "2025-04-23 09:46:00", "is_user": false, "message": "Kein Problem – soll ich dich in einer Stunde nochmal erinnern?"},
+  {"datetime": "2025-04-23 09:46:30", "is_user": true, "message": "Ja, das wäre super."},
+  {"datetime": "2025-04-23 10:45:00", "is_user": false, "message": "Kleiner Reminder: Jetzt wäre ein guter Moment für deine Übungen 🙂"},
+  {"datetime": "2025-04-23 11:30:00", "is_user": true, "message": "Okay, jetzt hab ich sie gemacht. War gut, dass du mich nochmal angeschubst hast."},
+
+  {"datetime": "2025-04-24 09:00:00", "is_user": false, "message": "Guten Morgen! Heute wieder an die Übungen gedacht?"},
+  {"datetime": "2025-04-24 09:05:00", "is_user": true, "message": "Noch nicht... hab gleich ein Meeting, danach vielleicht."},
+  {"datetime": "2025-04-24 12:00:00", "is_user": false, "message": "Willst du kurz durchatmen und dir 10 Minuten für die Übungen nehmen?"},
+  {"datetime": "2025-04-24 13:15:00", "is_user": true, "message": "Hab’s grad endlich gemacht. War wieder knapp."},
+
+  {"datetime": "2025-04-25 10:00:00", "is_user": false, "message": "Dritter Tag! Heute eine kleine Erinnerung gefällig?"},
+  {"datetime": "2025-04-25 10:01:00", "is_user": true, "message": "Ja bitte. Kannst du mich um 12 nochmal pingen?"},
+  {"datetime": "2025-04-25 12:00:00", "is_user": false, "message": "Erinnerung: Zeit für deine Übungen 😊"},
+  {"datetime": "2025-04-25 13:30:00", "is_user": true, "message": "Dieses Mal hab ich’s verpasst. Vielleicht später..."},
+  {"datetime": "2025-04-25 18:00:00", "is_user": false, "message": "Letzte Chance für heute 😉 Ein kurzer Durchlauf wäre besser als nichts!"}
+]

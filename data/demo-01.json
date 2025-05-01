@@ -1,0 +1,12 @@
+[
+  {"datetime": "2025-04-23 09:00:00", "is_user": false, "message": "Guten Morgen! Denk bitte an deine Übungen für heute – brauchst du noch eine Erinnerung später?"},
+  {"datetime": "2025-04-23 09:01:00", "is_user": true, "message": "Danke! Hab sie schon vor dem Frühstück gemacht 😄"},
+  {"datetime": "2025-04-23 09:02:30", "is_user": false, "message": "Super! Dann hast du ja schon einen perfekten Start in den Tag."},
+
+  {"datetime": "2025-04-24 08:30:00", "is_user": true, "message": "Übungen heute wieder erledigt. Fühlt sich inzwischen schon routiniert an."},
+  {"datetime": "2025-04-24 08:32:00", "is_user": false, "message": "Das klingt klasse! Wenn du so weitermachst, wirst du schnelle Fortschritte sehen."},
+
+  {"datetime": "2025-04-25 07:45:00", "is_user": false, "message": "Guten Morgen – alles bereit für Tag 3?"},
+  {"datetime": "2025-04-25 07:46:00", "is_user": true, "message": "Schon erledigt ✌️ Die Dehnübung fällt mir auch leichter."},
+  {"datetime": "2025-04-25 07:47:30", "is_user": false, "message": "Stark! Denk daran, dass Konstanz der Schlüssel ist. Ich melde mich morgen wieder, wenn du magst."}
+]
