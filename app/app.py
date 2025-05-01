@@ -1,3 +1,4 @@
+import asyncio
 import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -25,6 +26,9 @@ def acting():
         action = agent.react(chat_id)
         if action:
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
+            if action.startswith('tg'):
+                asyncio.run(bot.sendMessage(chat_id=chat_id.removeprefix('tg'), text=action))
+
 
 
 # First Start the scheduler so no multithreading happends then add the job
@@ -62,7 +66,7 @@ def send_message():
 
 
 @app.route('/bot/{}'.format(TELEGRAM_BOT_TOKEN), methods=['POST'])
-async def respond():
+def respond():
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
@@ -75,7 +79,7 @@ async def respond():
     agents_response = agent.react(chat_id)
     if agents_response:
         mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
-        await bot.sendMessage(chat_id=original_chat_id, text=agents_response)
+        asyncio.run(bot.sendMessage(chat_id=original_chat_id, text=agents_response))
 
     return 'ok'
 
