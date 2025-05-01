@@ -3,6 +3,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import dotenv
+import requests
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 from flask import Flask, send_file, jsonify, request
@@ -83,9 +84,12 @@ def respond():
 
 # Only for setup purposes
 @app.route('/setwebhook', methods=['GET', 'POST'])
-async def set_webhook():
-    s = await bot.setWebhook(HEROKU_URL)
-    if s:
-        return "webhook setup ok"
+def set_webhook():
+    response = requests.post(
+        f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/setWebhook',
+        data={'url': HEROKU_URL}
+    )
+    if response.status_code == 200:
+        print('Webhook has been set successfully!')
     else:
-        return "webhook setup failed"
+        print('Failed to set webhook. Please check your API token and URL.')
