@@ -1,6 +1,7 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import httpx
 import requests
 import telegram
 from flask import request, Blueprint
@@ -11,7 +12,11 @@ from app.util import mongodb_util
 
 telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
-request = HTTPXRequest(pool_maxsize=50, pool_timeout=10.0)
+limits = httpx.Limits(max_connections=50, max_keepalive_connections=20)
+client = httpx.AsyncClient(limits=limits, timeout=httpx.Timeout(10.0))
+
+# Pass the client into the HTTPXRequest
+request = HTTPXRequest(http_version="1.1", client=client)
 bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN,request=request)
 
 
