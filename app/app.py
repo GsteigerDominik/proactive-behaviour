@@ -6,7 +6,7 @@ import dotenv
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 from flask import Flask, send_file, jsonify, request
-from tqdm.contrib import telegram
+import telegram
 
 from app import agent
 from app.util import mongodb_util
