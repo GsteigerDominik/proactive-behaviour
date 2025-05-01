@@ -64,7 +64,7 @@ def send_message():
 """
 here the route function respond to a url which is basically /{token} which is the url telegram will call to get responses for the messages sent to him.
 """
-@app.route('/bot/{}/webhook'.format(TELEGRAM_BOT_TOKEN))
+@app.route('/bot/{}'.format(TELEGRAM_BOT_TOKEN))
 def respond():
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
