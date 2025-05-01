@@ -1,6 +1,7 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import flask
 import requests
 import telegram
 from flask import request, Blueprint
@@ -33,7 +34,7 @@ def set_webhook():
 @telegram_blueprint.route('/bot/{}'.format(env.TELEGRAM_BOT_TOKEN), methods=['POST'])
 async def respond():
     # retrieve the message in JSON and then transform it to Telegram object
-    update = telegram.Update.de_json(request.get_json(force=True), bot)
+    update = telegram.Update.de_json(flask.request.get_json(force=True), bot)
 
     # get the chat_id to be able to respond to the same user
     original_chat_id = update.message.chat.id
