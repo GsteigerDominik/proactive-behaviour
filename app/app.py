@@ -71,7 +71,7 @@ def respond():
 
     # get the chat_id to be able to respond to the same user
     original_chat_id=update.message.chat.id
-    chat_id = 'tg-'+update.message.chat.id
+    chat_id = 'tg-'+str(update.message.chat.id)
     msg = update.message.text.encode('utf-8').decode()
 
     mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
