@@ -83,8 +83,8 @@ def respond():
 
 # Only for setup purposes
 @app.route('/setwebhook', methods=['GET', 'POST'])
-def set_webhook():
-    s = bot.setWebhook('{URL}{HOOK}'.format(URL=HEROKU_URL, HOOK=TELEGRAM_BOT_TOKEN))
+async def set_webhook():
+    s = await bot.setWebhook(HEROKU_URL)
     if s:
         return "webhook setup ok"
     else:
