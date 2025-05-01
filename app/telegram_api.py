@@ -1,23 +1,20 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-import httpx
 import requests
 import telegram
 from flask import request, Blueprint
-from telegram.request import HTTPXRequest
 
 from app import env, agent
 from app.util import mongodb_util
 
 telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
-limits = httpx.Limits(max_connections=50, max_keepalive_connections=20)
-client = httpx.AsyncClient(limits=limits, timeout=httpx.Timeout(10.0))
+from telegram.request import HTTPXRequest
 
-# Pass the client into the HTTPXRequest
-request = HTTPXRequest(http_version="1.1", client=client)
-bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN,request=request)
+# Just set a longer timeout (no pool config possible in older versions)
+request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0)
+bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN, request=request)
 
 
 @telegram_blueprint.route('/setwebhook', methods=['GET', 'POST'])
