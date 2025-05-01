@@ -4,13 +4,13 @@ from zoneinfo import ZoneInfo
 import requests
 import telegram
 from flask import request, Blueprint
+from telegram.request import HTTPXRequest
 
 from app import env, agent
 from app.util import mongodb_util
 
 telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
-from telegram.request import HTTPXRequest
 
 # Just set a longer timeout (no pool config possible in older versions)
 request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0)
