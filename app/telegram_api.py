@@ -14,7 +14,7 @@ telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
 
 # Just set a longer timeout (no pool config possible in older versions)
-request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0)
+request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0,connection_pool_size=20)
 bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN, request=request)
 
 
