@@ -41,7 +41,7 @@ import json
 
 # Open and read the JSON file
 #chat_ids = ['szenario-01','szenario-02','szenario-03']
-chat_ids = ['dominik-en']
+chat_ids = ['tg-8086457766']
 #chat_ids = ['demo-01', 'demo-02']
 for chat_id in chat_ids:
     delete_szenario(chat_id)

@@ -14,8 +14,9 @@ col_debug = db["debug"]
 
 
 def insert_message(chat_id, datetime, is_user, message, message_id=None):
-    exist = col.find_one({'chat_id': chat_id, 'message_id': message_id})
-    if not exist:
+    if message_id:
+        exist = col.find_one({'chat_id': chat_id, 'message_id': message_id})
+    if not message_id or not exist:
         col.insert_one({
             "chat_id": chat_id,
             "timestamp": datetime,
