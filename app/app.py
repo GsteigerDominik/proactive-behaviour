@@ -17,6 +17,7 @@ app.register_blueprint(telegram_blueprint)
 
 
 async def primitive_tact():
+    print('Takt gestartet')
     chat_ids = mongodb_util.read_chatids()
     for chat_id in chat_ids:
         action = agent.act(chat_id)
@@ -28,4 +29,4 @@ async def primitive_tact():
 # First Start the scheduler so no multithreading happends then add the job
 scheduler = BackgroundScheduler()
 scheduler.start()
-scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5)
+scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5,max_instances=1)
