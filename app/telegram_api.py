@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 import flask
 import requests
 import telegram
-from flask import request, Blueprint
+from flask import Blueprint
 from telegram.request import HTTPXRequest
 
 from app import env, agent
@@ -12,9 +12,8 @@ from app.util import mongodb_util
 
 telegram_blueprint = Blueprint('telegram_blueprint', __name__, )
 
-
 # Just set a longer timeout (no pool config possible in older versions)
-request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0,connection_pool_size=20)
+request = HTTPXRequest(read_timeout=10.0, connect_timeout=10.0, connection_pool_size=20)
 bot = telegram.Bot(token=env.TELEGRAM_BOT_TOKEN, request=request)
 
 
@@ -35,10 +34,11 @@ def set_webhook():
 async def respond():
     update = telegram.Update.de_json(flask.request.get_json(force=True), bot)
     original_chat_id = update.message.chat.id
+    message_id = update.message.message_id
     chat_id = 'tg-' + str(update.message.chat.id)
     msg = update.message.text.encode('utf-8').decode()
 
-    mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
+    mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg, message_id)
     agents_response = agent.act(chat_id)
     if agents_response:
         await send_telegram_msg(original_chat_id, agents_response)

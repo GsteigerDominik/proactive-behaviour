@@ -13,16 +13,16 @@ col = db["test"]
 col_debug = db["debug"]
 
 
-def insert_message(chat_id, datetime, is_user, message):
-    col.insert_one(
-        {
+def insert_message(chat_id, datetime, is_user, message, message_id=None):
+    exist = col.find_one({'chat_id': chat_id, 'message_id': message_id})
+    if not exist:
+        col.insert_one({
             "chat_id": chat_id,
             "timestamp": datetime,
             "is_user": is_user,
-            "message": message
-
-        }
-    )
+            "message": message,
+            "message_id": message_id
+        })
 
 
 def insert_debug(datetime, prompt):
