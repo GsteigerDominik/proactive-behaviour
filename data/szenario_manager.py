@@ -47,4 +47,4 @@ for chat_id in chat_ids:
     delete_szenario(chat_id)
     with open(chat_id + '.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
-    insert_szenario(chat_id, data)
+    #insert_szenario(chat_id, data)

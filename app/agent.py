@@ -5,7 +5,7 @@ from app import response_formats
 from app.util import mongodb_util, openai_util, file_util
 
 
-def react(chat_id):
+def act(chat_id):
     chat_hist = mongodb_util.read_chathistory_string(chat_id)
     should = should_answer(chat_hist)
     print(f'{chat_id} : DECISION {should.contact_user}, {should.reasoning}')

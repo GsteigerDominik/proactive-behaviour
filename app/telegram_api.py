@@ -33,19 +33,16 @@ def set_webhook():
 
 @telegram_blueprint.route('/bot/{}'.format(env.TELEGRAM_BOT_TOKEN), methods=['POST'])
 async def respond():
-    # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(flask.request.get_json(force=True), bot)
-
-    # get the chat_id to be able to respond to the same user
     original_chat_id = update.message.chat.id
     chat_id = 'tg-' + str(update.message.chat.id)
     msg = update.message.text.encode('utf-8').decode()
 
     mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), True, msg)
-    agents_response = agent.react(chat_id)
+    agents_response = agent.act(chat_id)
     if agents_response:
-        mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
         await send_telegram_msg(original_chat_id, agents_response)
+        mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, agents_response)
     return 'ok'
 
 
