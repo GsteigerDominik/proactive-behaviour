@@ -6,7 +6,7 @@ from app import env
 # SETUP
 client = pymongo.MongoClient(env.MONGODB_CONNECTION_URL)
 db = client["proactive-behaviour"]
-col = db["test"]
+col = db["validation"]
 col_debug = db["debug"]
 
 
