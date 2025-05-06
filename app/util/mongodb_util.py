@@ -1,13 +1,10 @@
-import os
-
 import pymongo
 import pytz
-from dotenv import load_dotenv
+
+from app import env
 
 # SETUP
-load_dotenv()
-MONGODB_CONNECTION_URL = os.getenv("MONGODB_CONNECTION_URL")
-client = pymongo.MongoClient(MONGODB_CONNECTION_URL)
+client = pymongo.MongoClient(env.MONGODB_CONNECTION_URL)
 db = client["proactive-behaviour"]
 col = db["test"]
 col_debug = db["debug"]

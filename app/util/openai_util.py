@@ -1,16 +1,11 @@
-import os
-
-from dotenv import load_dotenv
 from openai import OpenAI
 
-# SETUP
-load_dotenv()
-API_KEY = os.getenv("OPENAI_API_KEY")
+from app import env
 
 
 def gpt_query(prompt):
     try:
-        client = OpenAI(api_key=API_KEY, )
+        client = OpenAI(api_key=env.OPENAI_API_KEY, )
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt, }],
             model="gpt-4o-mini",
@@ -23,9 +18,9 @@ def gpt_query(prompt):
         return None
 
 
-def gpt_query_with_response_format(prompt,response_format):
+def gpt_query_with_response_format(prompt, response_format):
     try:
-        client = OpenAI(api_key=API_KEY, )
+        client = OpenAI(api_key=env.OPENAI_API_KEY, )
         chat_completion = client.beta.chat.completions.parse(
             messages=[{"role": "user", "content": prompt, }], model="gpt-4o-mini",
             response_format=response_format,

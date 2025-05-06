@@ -3,7 +3,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from flask import Flask, send_file, jsonify, request
+from flask import Flask
 
 from app import agent
 from app.telegram_api import send_telegram_msg, telegram_blueprint
@@ -26,7 +26,8 @@ async def primitive_tact():
                 await send_telegram_msg(chat_id.removeprefix('tg-'), text=action)
             mongodb_util.insert_message(chat_id, datetime.now(ZoneInfo("Europe/Zurich")), False, action)
 
+
 # First Start the scheduler so no multithreading happends then add the job
 scheduler = BackgroundScheduler()
 scheduler.start()
-scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5,max_instances=1)
+scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5, max_instances=1)
