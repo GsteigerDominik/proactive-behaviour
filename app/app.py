@@ -28,6 +28,6 @@ async def primitive_tact():
 
 
 # First Start the scheduler so no multithreading happends then add the job
-scheduler = BackgroundScheduler()
-scheduler.start()
-scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5, max_instances=1)
+#scheduler = BackgroundScheduler()
+#scheduler.start()
+#scheduler.add_job(lambda: asyncio.run(primitive_tact()), 'interval', minutes=5, max_instances=1)
